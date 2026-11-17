@@ -1,0 +1,1 @@
+This project focuses on dynamic memory allocation in C and how to manage memory using malloc(), free(), calloc() and realloc(). It also covers how to use exit() to terminate a program with a specific status code. The main objective is to understand how to allocate, initialize, resize and release memory safely, while avoiding memory leaks and handling allocation failures.
