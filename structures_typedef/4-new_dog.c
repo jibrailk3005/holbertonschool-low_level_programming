@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include "dog.h"
 
 /**
@@ -16,19 +15,29 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *dog_name;
 	char *dog_owner;
 	unsigned int i;
+	unsigned int name_len;
+	unsigned int owner_len;
+
+	name_len = 0;
+	while (name[name_len] != '\0')
+		name_len++;
+
+	owner_len = 0;
+	while (owner[owner_len] != '\0')
+		owner_len++;
 
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
 
-	dog_name = malloc(strlen(name) + 1);
+	dog_name = malloc(name_len + 1);
 	if (dog_name == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
 
-	dog_owner = malloc(strlen(owner) + 1);
+	dog_owner = malloc(owner_len + 1);
 	if (dog_owner == NULL)
 	{
 		free(dog_name);
@@ -36,13 +45,11 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	for (i = 0; name[i] != '\0'; i++)
+	for (i = 0; i <= name_len; i++)
 		dog_name[i] = name[i];
-	dog_name[i] = '\0';
 
-	for (i = 0; owner[i] != '\0'; i++)
+	for (i = 0; i <= owner_len; i++)
 		dog_owner[i] = owner[i];
-	dog_owner[i] = '\0';
 
 	dog->name = dog_name;
 	dog->age = age;
