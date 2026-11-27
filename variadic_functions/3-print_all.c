@@ -1,15 +1,20 @@
 
 #include <stdio.h>
-#include <stdarg.h>
+#include "variadic_functions.h"
 
 /**
- * print_separator - Prints a separator when needed
+ * print_separator - Prints separator between values
  * @count: Number of values already printed
  */
 void print_separator(int *count)
 {
-	if (*count > 0)
+	switch (*count)
+	{
+	case 0:
+		break;
+	default:
 		printf(", ");
+	}
 	(*count)++;
 }
 
